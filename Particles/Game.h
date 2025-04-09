@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 //#include "Paddle.hpp"
 //#include "Ball.hpp"
+#include "Particle.h"
 
 class Game {
 public:
@@ -20,6 +21,7 @@ private:
 
 	//Paddle leftPaddle;
 	//Paddle rightPaddle;
+	Particle m_particle;
 };
 
 #endif

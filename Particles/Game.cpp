@@ -1,12 +1,6 @@
 #include "Game.h"
 
-Game::Game() : window(sf::VideoMode(800, 600), "Pong"), windowSize(window.getSize()) {
-    //window(sf::VideoMode(800, 600), "Pong"), windowSize(window.getSize());
-    //leftPaddle(windowSize.x / 2 - 350, windowSize.y / 2), rightPaddle(windowSize.x / 2 + 350, windowSize.y / 2)
-
-    //window = { sf::VideoMode(800, 600), "Particles" };
-
-
+Game::Game() : window(sf::VideoMode(800, 600), "Partcles"), windowSize(window.getSize()), m_particle(windowSize.x/2, windowSize.y/2) {
     window.setFramerateLimit(60);
 }
 
@@ -41,7 +35,13 @@ void Game::update() {
 //handle drawing
 void Game::render() {
     window.clear();
-    //window.draw(leftPaddle.getShape());
-    //window.draw(rightPaddle.getShape());
+
+
+    // Draw Loop
+    /////////////////////////
+    window.draw(m_particle.getShape());
+    ////////////////////////
+
+
     window.display();
 }
