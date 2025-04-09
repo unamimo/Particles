@@ -16,11 +16,9 @@ private:
 	void update();
 	void render();
 
-	sf::RenderWindow window;
-	sf::Vector2u windowSize;
+	sf::RenderWindow window = sf::RenderWindow (sf::VideoMode(800, 600), "Particles");
+	sf::Vector2u windowSize = window.getSize();
 
-	//Paddle leftPaddle;
-	//Paddle rightPaddle;
 	Particle m_particle;
 };
 

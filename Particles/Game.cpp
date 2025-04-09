@@ -1,6 +1,7 @@
 #include "Game.h"
 
-Game::Game() : window(sf::VideoMode(800, 600), "Partcles"), windowSize(window.getSize()), m_particle(windowSize.x/2, windowSize.y/2) {
+Game::Game() : m_particle(windowSize.x/2, windowSize.y/2) // set particle start pos to middle of screen
+{
     window.setFramerateLimit(60);
 }
 

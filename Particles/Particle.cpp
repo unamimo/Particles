@@ -2,7 +2,7 @@
 
 Particle::Particle(float startX, float startY)
 {
-	particleShape.setRadius(100.f);
+	particleShape.setRadius(10.f);
 	particleShape.setFillColor(sf::Color::Blue);
 	setParticlePosition(startX, startY);
 	particleShape.setOrigin(particleShape.getRadius(), particleShape.getRadius()); // Set origin to centre
