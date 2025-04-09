@@ -33,6 +33,15 @@ private:
 	//Particle m_particle2 = Particle((windowSize.x / 2 + 300), windowSize.y / 2);
 
 	std::vector<Particle> m_vParticles;	// vector to store all particles
+
+	// associate colours with numbers to get a random value
+	std::map<int, sf::Color> colourMap = {
+		{0, sf::Color::Red},
+		{1, sf::Color::Blue},
+		{2, sf::Color::Green},
+		{3, sf::Color::Yellow},
+		{4, sf::Color::Magenta},
+	};
 };
 
 #endif
