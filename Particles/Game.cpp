@@ -1,6 +1,6 @@
 #include "Game.h"
 
-Game::Game() : m_particle(windowSize.x/2, windowSize.y/2) // set particle start pos to middle of screen
+Game::Game()
 {
     window.setFramerateLimit(60);
 }
@@ -41,6 +41,7 @@ void Game::render() {
     // Draw Loop
     /////////////////////////
     window.draw(m_particle.getShape());
+    window.draw(m_particle2.getShape());
     ////////////////////////
 
 

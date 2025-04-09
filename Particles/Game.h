@@ -19,7 +19,9 @@ private:
 	sf::RenderWindow window = sf::RenderWindow (sf::VideoMode(800, 600), "Particles");
 	sf::Vector2u windowSize = window.getSize();
 
-	Particle m_particle;
+	// set particle start pos to middle of screen
+	Particle m_particle = Particle(windowSize.x / 2, windowSize.y / 2);
+	Particle m_particle2 = Particle((windowSize.x / 2 + 300), windowSize.y / 2);
 };
 
 #endif
