@@ -34,6 +34,7 @@ void Game::update() {
 }
 
 //handle drawing
+//equivelent of 'init' function
 void Game::render() {
     window.clear();
 
@@ -46,4 +47,12 @@ void Game::render() {
 
 
     window.display();
+}
+
+void Game::createParticle(sf::Color colour, sf::Vector2f position, float radius, float velocity)
+{
+    m_particle.setColour(colour);
+    m_particle.setParticlePosition(position.x, position.y);
+    m_particle.setRadius(radius);
+    m_particle.setVelocity(velocity);
 }

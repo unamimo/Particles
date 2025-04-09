@@ -2,6 +2,7 @@
 
 Particle::Particle(float startX, float startY)
 {
+	// these are maybe default values?
 	particleShape.setRadius(10.f);
 	particleShape.setFillColor(sf::Color::Blue);
 	setParticlePosition(startX, startY);
@@ -19,3 +20,15 @@ void Particle::setParticlePosition(float posX, float posY)
 	particlePosition.y = posY;
 	particleShape.setPosition(particlePosition);
 }
+
+//void Particle::setColour(sf::Color)
+//{
+//}
+//
+//void Particle::setRadius(float _radius)
+//{
+//}
+//
+//void Particle::setVelocity(float _velocity)
+//{
+//}

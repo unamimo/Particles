@@ -9,10 +9,21 @@ public:
 	Particle(float startX, float startY);
 
 	sf::CircleShape getShape();
+	sf::Vector2f getParticlePosition() { return particlePosition; }
+	sf::Color getColour() { return colour; }
+	float getRadius() { return radius; }
+	float getVelocity() { return velocity; }
+
 	void setParticlePosition(float posX, float posY);
+	void setColour(sf::Color _colour) { colour = _colour; }
+	void setRadius(float _radius) { radius = _radius; }
+	void setVelocity(float _velocity) { velocity = _velocity; }
 private:
 	sf::CircleShape particleShape;
 	sf::Vector2f particlePosition;
+	sf::Color colour;
+	float radius;
+	float velocity;
 };
 
 
