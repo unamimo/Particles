@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <map>
 
 class Particle {
 public:
@@ -26,6 +27,15 @@ private:
 	sf::Color colour;
 	float radius;
 	float velocity;
+
+	// associate colours with numbers to get a random value
+	std::map<sf::Color, int> colourMap = {
+		{sf::Color::Red, 0},
+		{sf::Color::Blue, 1},
+		{sf::Color::Green, 2},
+		{sf::Color::Yellow, 3},
+		{sf::Color::Magenta, 4},
+	};
 };
 
 
