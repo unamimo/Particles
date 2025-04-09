@@ -6,6 +6,8 @@ Game::Game()
 }
 
 void Game::run() {
+    init();
+
     while (window.isOpen())
     {
         processEvents();
@@ -34,25 +36,40 @@ void Game::update() {
 }
 
 //handle drawing
-//equivelent of 'init' function
 void Game::render() {
     window.clear();
 
 
     // Draw Loop
     /////////////////////////
-    window.draw(m_particle.getShape());
-    window.draw(m_particle2.getShape());
+    //window.draw(m_particle.getShape());
+    //window.draw(m_particle2.getShape());
+    for (size_t i = 0; i < m_vParticles.size(); i++)
+    {
+        window.draw(m_vParticles[i].getShape());
+    }
     ////////////////////////
 
 
     window.display();
 }
 
+void Game::init()
+{
+    createParticle(sf::Color::Green, { 200, 100 }, 10.f, 20.f);
+    createParticle(sf::Color::Blue, { 400, 239 }, 30.f, 20.f);
+    createParticle(sf::Color::Red, { 100, 500 }, 5.f, 20.f);
+}
+
 void Game::createParticle(sf::Color colour, sf::Vector2f position, float radius, float velocity)
 {
+    // set particle start pos to middle of screen by default
+    Particle m_particle = Particle(windowSize.x / 2, windowSize.y / 2);
+
     m_particle.setColour(colour);
     m_particle.setParticlePosition(position.x, position.y);
     m_particle.setRadius(radius);
     m_particle.setVelocity(velocity);
+
+    m_vParticles.push_back(m_particle);
 }

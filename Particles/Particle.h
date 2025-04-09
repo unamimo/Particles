@@ -15,8 +15,10 @@ public:
 	float getVelocity() { return velocity; }
 
 	void setParticlePosition(float posX, float posY);
-	void setColour(sf::Color _colour) { colour = _colour; }
-	void setRadius(float _radius) { radius = _radius; }
+	//void setColour(sf::Color _colour) { colour = _colour; }
+	void setColour(sf::Color _colour);
+	//void setRadius(float _radius) { radius = _radius; }
+	void setRadius(float _radius);
 	void setVelocity(float _velocity) { velocity = _velocity; }
 private:
 	sf::CircleShape particleShape;

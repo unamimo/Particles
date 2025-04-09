@@ -15,6 +15,7 @@ private:
 	void processEvents();
 	void update();
 	void render();
+	void init();
 
 	void createParticle(sf::Color colour, sf::Vector2f position, float radius, float velocity);
 
@@ -22,10 +23,10 @@ private:
 	sf::Vector2u windowSize = window.getSize();
 
 	// set particle start pos to middle of screen
-	Particle m_particle = Particle(windowSize.x / 2, windowSize.y / 2);
-	Particle m_particle2 = Particle((windowSize.x / 2 + 300), windowSize.y / 2);
+	//Particle m_particle = Particle(windowSize.x / 2, windowSize.y / 2);
+	//Particle m_particle2 = Particle((windowSize.x / 2 + 300), windowSize.y / 2);
 
-	std::vector<Particle*> m_vParticles;	// vector to store all particles
+	std::vector<Particle> m_vParticles;	// vector to store all particles
 };
 
 #endif

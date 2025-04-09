@@ -4,7 +4,7 @@ Particle::Particle(float startX, float startY)
 {
 	// these are maybe default values?
 	particleShape.setRadius(10.f);
-	particleShape.setFillColor(sf::Color::Blue);
+	//particleShape.setFillColor(sf::Color::Blue);
 	setParticlePosition(startX, startY);
 	particleShape.setOrigin(particleShape.getRadius(), particleShape.getRadius()); // Set origin to centre
 }
@@ -21,14 +21,14 @@ void Particle::setParticlePosition(float posX, float posY)
 	particleShape.setPosition(particlePosition);
 }
 
-//void Particle::setColour(sf::Color)
-//{
-//}
-//
-//void Particle::setRadius(float _radius)
-//{
-//}
-//
-//void Particle::setVelocity(float _velocity)
-//{
-//}
+void Particle::setColour(sf::Color _colour)
+{
+	colour = _colour;
+	particleShape.setFillColor(colour);
+}
+
+void Particle::setRadius(float _radius)
+{
+	radius = _radius;
+	particleShape.setRadius(radius);
+}
