@@ -3,14 +3,19 @@
 #include <iostream>
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
-//#include "Paddle.hpp"
-//#include "Ball.hpp"
 #include "Particle.h"
+#include <algorithm>
+#include <random>
 
 class Game {
 public:
 	Game();
 	void run();
+
+	// CONSTANTS
+	const sf::Vector2<int> K_WINDOWXY = { 800, 600 };
+	const int K_NUMPARTICLES = 10;
+
 private:
 	void processEvents();
 	void update();
@@ -18,8 +23,9 @@ private:
 	void init();
 
 	void createParticle(sf::Color colour, sf::Vector2f position, float radius, float velocity);
+	int getRandomNum(int upperRange);	// TODO: currently returns int, make it return a float later
 
-	sf::RenderWindow window = sf::RenderWindow (sf::VideoMode(800, 600), "Particles");
+	sf::RenderWindow window = sf::RenderWindow (sf::VideoMode(K_WINDOWXY.x, K_WINDOWXY.y), "Particles");
 	sf::Vector2u windowSize = window.getSize();
 
 	// set particle start pos to middle of screen

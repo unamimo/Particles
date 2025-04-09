@@ -59,6 +59,15 @@ void Game::init()
     createParticle(sf::Color::Green, { 200, 100 }, 10.f, 20.f);
     createParticle(sf::Color::Blue, { 400, 239 }, 30.f, 20.f);
     createParticle(sf::Color::Red, { 100, 500 }, 5.f, 20.f);
+
+    for (size_t i = 0; i < K_NUMPARTICLES; i++)
+    {
+        //random co-oordinates
+        // convert int to float now, but will later on accept floats
+        sf::Vector2f randPos = { static_cast<float>(getRandomNum(K_WINDOWXY.x)),  static_cast<float>(getRandomNum(K_WINDOWXY.y)) };
+
+        createParticle(sf::Color::Yellow, randPos, 5.f, 20.f);
+    }
 }
 
 void Game::createParticle(sf::Color colour, sf::Vector2f position, float radius, float velocity)
@@ -72,4 +81,17 @@ void Game::createParticle(sf::Color colour, sf::Vector2f position, float radius,
     m_particle.setVelocity(velocity);
 
     m_vParticles.push_back(m_particle);
+}
+
+int Game::getRandomNum(int upperRange)
+{
+    //generate random number that only regenerates on new function call
+    //float randomNum = (rand() % upperRange) + 1;
+
+    //https://stackoverflow.com/questions/13445688/how-to-generate-a-random-number-in-c
+    std::random_device dev;
+    std::mt19937 rng(dev());
+    std::uniform_int_distribution<std::mt19937::result_type> dist(1, upperRange); // distribution in range [1, 6]
+
+    return dist(rng);
 }
