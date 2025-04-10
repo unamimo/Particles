@@ -35,7 +35,7 @@ void Game::update() {
     //}
     for (size_t i = 0; i < m_vParticles.size(); i++)
     {
-        m_vParticles[i].moveParticle({ K_UPRIGHT });
+        m_vParticles[i].moveParticle();
     }
 }
 
@@ -70,11 +70,11 @@ void Game::init()
         // convert int to float now, but will later on accept floats
         sf::Vector2f randPos = { static_cast<float>(getRandomNum(0, K_WINDOWXY.x)),  static_cast<float>(getRandomNum(0, K_WINDOWXY.y)) };
 
-        createParticle(getRandomColour(), randPos, K_PARTICLERADIUS, K_PARTICLEVELOCITY);
+        createParticle(getRandomColour(), randPos, K_PARTICLERADIUS, K_PARTICLEVELOCITY, getRandomDirection());
     }
 }
 
-void Game::createParticle(sf::Color colour, sf::Vector2f startPos, float radius, float velocity)
+void Game::createParticle(sf::Color colour, sf::Vector2f startPos, float radius, float velocity, sf::Vector2i direction)
 {
     // set particle start pos to middle of screen by default
     Particle m_particle = Particle(windowSize.x / 2, windowSize.y / 2);
@@ -83,6 +83,7 @@ void Game::createParticle(sf::Color colour, sf::Vector2f startPos, float radius,
     m_particle.setParticlePosition(startPos.x, startPos.y);
     m_particle.setRadius(radius);
     m_particle.setVelocity(velocity);
+    m_particle.setDirection(direction);
 
     m_vParticles.push_back(m_particle);
 }
@@ -105,4 +106,11 @@ sf::Color Game::getRandomColour()
     int colourKey = getRandomNum(0, colourMap.size() - 1);
 
     return colourMap.at(colourKey);
+}
+
+sf::Vector2<int> Game::getRandomDirection()
+{
+    int directionKey = getRandomNum(0, directionMap.size() - 1);
+
+    return directionMap.at(directionKey);
 }

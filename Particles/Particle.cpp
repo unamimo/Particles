@@ -9,7 +9,7 @@ Particle::Particle(float startX, float startY)
 	particleShape.setOrigin(particleShape.getRadius(), particleShape.getRadius()); // Set origin to centre
 }
 
-void Particle::moveParticle(sf::Vector2<int> direction)
+void Particle::moveParticle()
 {
 	float movePosX = particlePosition.x + direction.x;
 	float movePosY = particlePosition.y + direction.y;

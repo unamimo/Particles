@@ -50,7 +50,7 @@ private:
 	void render();
 	void init();
 
-	void createParticle(sf::Color colour, sf::Vector2f startPos, float radius, float velocity);
+	void createParticle(sf::Color colour, sf::Vector2f startPos, float radius, float velocity, sf::Vector2i direction);
 	int getRandomNum(int lowerRange, int upperRange);
 	sf::Color getRandomColour();
 	sf::Vector2<int> getRandomDirection();
@@ -60,6 +60,7 @@ private:
 	sf::Vector2u windowSize = window.getSize();
 
 	std::vector<Particle> m_vParticles;	// vector to store all particles
+	//sf::Vector2i randomDir = getRandomDirection();
 };
 
 #endif
