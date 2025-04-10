@@ -9,6 +9,14 @@ Particle::Particle(float startX, float startY)
 	particleShape.setOrigin(particleShape.getRadius(), particleShape.getRadius()); // Set origin to centre
 }
 
+void Particle::moveParticle(sf::Vector2<int> direction)
+{
+	float movePosX = particlePosition.x + direction.x;
+	float movePosY = particlePosition.y + direction.y;
+
+	setParticlePosition(movePosX, movePosY);
+}
+
 sf::CircleShape Particle::getShape()
 {
 	return particleShape;

@@ -9,6 +9,8 @@ class Particle {
 public:
 	Particle(float startX, float startY);
 
+	void moveParticle(sf::Vector2<int> direction);
+
 	sf::CircleShape getShape();
 	sf::Vector2f getParticlePosition() { return particlePosition; }
 	sf::Color getColour() { return colour; }
@@ -27,6 +29,7 @@ private:
 	sf::Color colour;
 	float radius;
 	float velocity;
+	sf::Vector2f direction;	// end position?
 };
 
 

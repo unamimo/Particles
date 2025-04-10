@@ -17,6 +17,12 @@ public:
 	const int K_NUMPARTICLES = 10;
 	const float K_PARTICLERADIUS = 5.f;
 	const float K_PARTICLEVELOCITY = 20.f;
+	const sf::Vector2<int> K_UP = { 0, -1 };
+	const sf::Vector2<int> K_UPRIGHT = { 1, -1 };
+	const sf::Vector2<int> K_UPLEFT = { -1, -1 };
+	const sf::Vector2<int> K_DOWN = { 0, 1 };
+	const sf::Vector2<int> K_DOWNRIGHT = { 1, 1 };
+	const sf::Vector2<int> K_DOWNLEFT = { -1, 1 };
 
 private:
 	void processEvents();
@@ -24,16 +30,13 @@ private:
 	void render();
 	void init();
 
-	void createParticle(sf::Color colour, sf::Vector2f position, float radius, float velocity);
+	void createParticle(sf::Color colour, sf::Vector2f startPos, float radius, float velocity);
 	int getRandomNum(int lowerRange, int upperRange);
 	sf::Color pickRandomColour();
 
+
 	sf::RenderWindow window = sf::RenderWindow (sf::VideoMode(K_WINDOWXY.x, K_WINDOWXY.y), "Particles");
 	sf::Vector2u windowSize = window.getSize();
-
-	// set particle start pos to middle of screen
-	//Particle m_particle = Particle(windowSize.x / 2, windowSize.y / 2);
-	//Particle m_particle2 = Particle((windowSize.x / 2 + 300), windowSize.y / 2);
 
 	std::vector<Particle> m_vParticles;	// vector to store all particles
 

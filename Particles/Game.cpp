@@ -33,6 +33,10 @@ void Game::update() {
     //else if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Down))) {
     //    rightPaddle.moveDown();
     //}
+    for (size_t i = 0; i < m_vParticles.size(); i++)
+    {
+        m_vParticles[i].moveParticle({ K_UPRIGHT });
+    }
 }
 
 //handle drawing
@@ -70,13 +74,13 @@ void Game::init()
     }
 }
 
-void Game::createParticle(sf::Color colour, sf::Vector2f position, float radius, float velocity)
+void Game::createParticle(sf::Color colour, sf::Vector2f startPos, float radius, float velocity)
 {
     // set particle start pos to middle of screen by default
     Particle m_particle = Particle(windowSize.x / 2, windowSize.y / 2);
 
     m_particle.setColour(colour);
-    m_particle.setParticlePosition(position.x, position.y);
+    m_particle.setParticlePosition(startPos.x, startPos.y);
     m_particle.setRadius(radius);
     m_particle.setVelocity(velocity);
 
