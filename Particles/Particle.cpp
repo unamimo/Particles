@@ -19,9 +19,24 @@ void Particle::moveParticle()
 
 void Particle::collideWithScreen()
 {
-	if (particlePosition.x = K_WINDOWXY.x)
+	// Screen left and right collision
+	if ((particlePosition.x + radius) == K_WINDOWXY.x)
 	{
+		setParticlePosition(particlePosition.x - 1, particlePosition.y);
+	}
+	else if ((particlePosition.x - radius*2) == 0)
+	{
+		setParticlePosition(particlePosition.x + 1, particlePosition.y);
+	}
 
+	// Screen top and bottom collision
+	if ((particlePosition.y + radius) == K_WINDOWXY.y)
+	{
+		setParticlePosition(particlePosition.x, particlePosition.y - 1);
+	}
+	else if ((particlePosition.y - radius*2) == 0)
+	{
+		setParticlePosition(particlePosition.x, particlePosition.y + 1);
 	}
 }
 
