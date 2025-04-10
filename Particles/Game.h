@@ -15,6 +15,8 @@ public:
 	// CONSTANTS
 	const sf::Vector2<int> K_WINDOWXY = { 800, 600 };
 	const int K_NUMPARTICLES = 10;
+	const float K_PARTICLERADIUS = 5.f;
+	const float K_PARTICLEVELOCITY = 20.f;
 
 private:
 	void processEvents();
@@ -23,7 +25,7 @@ private:
 	void init();
 
 	void createParticle(sf::Color colour, sf::Vector2f position, float radius, float velocity);
-	int getRandomNum(int upperRange);	// TODO: currently returns int, make it return a float later
+	int getRandomNum(int lowerRange, int upperRange);
 	sf::Color pickRandomColour();
 
 	sf::RenderWindow window = sf::RenderWindow (sf::VideoMode(K_WINDOWXY.x, K_WINDOWXY.y), "Particles");

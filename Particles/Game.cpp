@@ -56,17 +56,17 @@ void Game::render() {
 
 void Game::init()
 {
-    createParticle(sf::Color::Green, { 200, 100 }, 10.f, 20.f);
-    createParticle(sf::Color::Blue, { 400, 239 }, 30.f, 20.f);
-    createParticle(sf::Color::Red, { 100, 500 }, 5.f, 20.f);
+    //createParticle(sf::Color::Green, { 200, 100 }, 10.f, 20.f);
+    //createParticle(sf::Color::Blue, { 400, 239 }, 30.f, 20.f);
+    //createParticle(sf::Color::Red, { 100, 500 }, 5.f, 20.f);
 
     for (size_t i = 0; i < K_NUMPARTICLES; i++)
     {
         //random co-oordinates
         // convert int to float now, but will later on accept floats
-        sf::Vector2f randPos = { static_cast<float>(getRandomNum(K_WINDOWXY.x)),  static_cast<float>(getRandomNum(K_WINDOWXY.y)) };
+        sf::Vector2f randPos = { static_cast<float>(getRandomNum(0, K_WINDOWXY.x)),  static_cast<float>(getRandomNum(0, K_WINDOWXY.y)) };
 
-        createParticle(pickRandomColour(), randPos, 5.f, 20.f);
+        createParticle(pickRandomColour(), randPos, K_PARTICLERADIUS, K_PARTICLEVELOCITY);
     }
 }
 
@@ -83,7 +83,7 @@ void Game::createParticle(sf::Color colour, sf::Vector2f position, float radius,
     m_vParticles.push_back(m_particle);
 }
 
-int Game::getRandomNum(int upperRange)
+int Game::getRandomNum(int lowerRange, int upperRange)
 {
     //generate random number that only regenerates on new function call
     //float randomNum = (rand() % upperRange) + 1;
@@ -91,14 +91,14 @@ int Game::getRandomNum(int upperRange)
     //https://stackoverflow.com/questions/13445688/how-to-generate-a-random-number-in-c
     std::random_device dev;
     std::mt19937 rng(dev());
-    std::uniform_int_distribution<std::mt19937::result_type> dist(1, upperRange); // distribution in range [1, 6]
+    std::uniform_int_distribution<std::mt19937::result_type> dist(lowerRange, upperRange); // distribution
 
     return dist(rng);
 }
 
 sf::Color Game::pickRandomColour()
 {
-    int colourKey = getRandomNum(colourMap.size() - 1);
+    int colourKey = getRandomNum(0, colourMap.size() - 1);
 
     return colourMap.at(colourKey);
 }
