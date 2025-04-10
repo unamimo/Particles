@@ -40,6 +40,10 @@ void Particle::collideWithScreen()
 	}
 }
 
+void Particle::collideWithParticles()
+{
+}
+
 sf::CircleShape Particle::getShape()
 {
 	return particleShape;

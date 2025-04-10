@@ -11,6 +11,7 @@ public:
 
 	void moveParticle();
 	void collideWithScreen();
+	void collideWithParticles();
 
 	sf::CircleShape getShape();
 	sf::Vector2f getParticlePosition() { return particlePosition; }
