@@ -3,13 +3,14 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <map>
+#include "Constants.h"
 
 class Particle {
 public:
 	Particle(float startX, float startY);
 
 	void moveParticle();
+	void collideWithScreen();
 
 	sf::CircleShape getShape();
 	sf::Vector2f getParticlePosition() { return particlePosition; }

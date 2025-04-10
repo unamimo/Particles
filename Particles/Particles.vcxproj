@@ -139,6 +139,7 @@
     <ClCompile Include="Particle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Particle.h" />
   </ItemGroup>

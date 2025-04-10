@@ -17,6 +17,14 @@ void Particle::moveParticle()
 	setParticlePosition(movePosX, movePosY);
 }
 
+void Particle::collideWithScreen()
+{
+	if (particlePosition.x = K_WINDOWXY.x)
+	{
+
+	}
+}
+
 sf::CircleShape Particle::getShape()
 {
 	return particleShape;
