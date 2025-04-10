@@ -24,6 +24,7 @@ private:
 
 	void createParticle(sf::Color colour, sf::Vector2f position, float radius, float velocity);
 	int getRandomNum(int upperRange);	// TODO: currently returns int, make it return a float later
+	sf::Color pickRandomColour();
 
 	sf::RenderWindow window = sf::RenderWindow (sf::VideoMode(K_WINDOWXY.x, K_WINDOWXY.y), "Particles");
 	sf::Vector2u windowSize = window.getSize();
@@ -35,7 +36,7 @@ private:
 	std::vector<Particle> m_vParticles;	// vector to store all particles
 
 	// associate colours with numbers to get a random value
-	std::map<int, sf::Color> colourMap = {
+	const std::map<int, sf::Color> colourMap = {
 		{0, sf::Color::Red},
 		{1, sf::Color::Blue},
 		{2, sf::Color::Green},

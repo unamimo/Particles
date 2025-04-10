@@ -65,9 +65,8 @@ void Game::init()
         //random co-oordinates
         // convert int to float now, but will later on accept floats
         sf::Vector2f randPos = { static_cast<float>(getRandomNum(K_WINDOWXY.x)),  static_cast<float>(getRandomNum(K_WINDOWXY.y)) };
-        sf::Color randomColour;
 
-        createParticle(sf::Color::Yellow, randPos, 5.f, 20.f);
+        createParticle(pickRandomColour(), randPos, 5.f, 20.f);
     }
 }
 
@@ -95,4 +94,11 @@ int Game::getRandomNum(int upperRange)
     std::uniform_int_distribution<std::mt19937::result_type> dist(1, upperRange); // distribution in range [1, 6]
 
     return dist(rng);
+}
+
+sf::Color Game::pickRandomColour()
+{
+    int colourKey = getRandomNum(colourMap.size() - 1);
+
+    return colourMap.at(colourKey);
 }
