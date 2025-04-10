@@ -70,7 +70,7 @@ void Game::init()
         // convert int to float now, but will later on accept floats
         sf::Vector2f randPos = { static_cast<float>(getRandomNum(0, K_WINDOWXY.x)),  static_cast<float>(getRandomNum(0, K_WINDOWXY.y)) };
 
-        createParticle(pickRandomColour(), randPos, K_PARTICLERADIUS, K_PARTICLEVELOCITY);
+        createParticle(getRandomColour(), randPos, K_PARTICLERADIUS, K_PARTICLEVELOCITY);
     }
 }
 
@@ -100,7 +100,7 @@ int Game::getRandomNum(int lowerRange, int upperRange)
     return dist(rng);
 }
 
-sf::Color Game::pickRandomColour()
+sf::Color Game::getRandomColour()
 {
     int colourKey = getRandomNum(0, colourMap.size() - 1);
 
