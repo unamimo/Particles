@@ -19,6 +19,8 @@ private:
 	void init();
 
 	void createParticle(sf::Color colour, sf::Vector2f startPos, float radius, float velocity, sf::Vector2i direction);
+	void collideWithParticles(Particle particle1, Particle particle2); // check collission with any other particles
+
 	int getRandomNum(int lowerRange, int upperRange);
 	sf::Color getRandomColour();
 	sf::Vector2<int> getRandomDirection();

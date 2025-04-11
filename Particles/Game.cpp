@@ -37,6 +37,10 @@ void Game::update() {
     {
         m_vParticles[i].moveParticle();
         m_vParticles[i].collideWithScreen();
+
+        Particle particle1 = m_vParticles[i];
+        Particle particle2 = m_vParticles[i + 1];
+        collideWithParticles(particle1, particle2);
     }
 }
 
@@ -87,6 +91,32 @@ void Game::createParticle(sf::Color colour, sf::Vector2f startPos, float radius,
     m_particle.setDirection(direction);
 
     m_vParticles.push_back(m_particle);
+}
+
+//https://www.jeffreythompson.org/collision-detection/circle-circle.php
+void Game::collideWithParticles(Particle particle1, Particle particle2)
+{
+    // check one particle to see if it collides with any other paricle in the array
+    //for (size_t i = 0; i < m_vParticles.size(); i++)
+    //{
+    //    Particle circle1 = m_vParticles[i];
+    //    Particle circle2;
+
+
+    //}
+
+    //sf::Vector2f otherPos;
+    //sf::Vector2f otherPos;
+
+    float distX = particle1.getParticlePosition().x - particle2.getParticlePosition().x;
+    float distY = particle1.getParticlePosition().y - particle2.getParticlePosition().y;
+    float distance = sqrt((distX * distX) + (distY * distY));
+
+    if (distance <= particle1.getRadius() + particle2.getRadius())
+    {
+        particle1.setColour(sf::Color::Red);
+        particle2.setColour(sf::Color::Red);
+    }
 }
 
 int Game::getRandomNum(int lowerRange, int upperRange)
