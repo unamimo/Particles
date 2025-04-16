@@ -32,6 +32,14 @@ void Game::update() {
         m_vParticles[i].moveParticle();
         m_vParticles[i].collideWithScreen();
 
+        bool isColliding = m_vParticles[i].getIsCollidingWithScreen();
+
+        if (isColliding == true)
+        {
+            std::cout << "Touching screen!";
+        }
+
+        // for checking collission between two particles
         for (size_t j = 0; j < m_vParticles.size(); j++)
         {
             if (i != j) // don't compare the the same element
