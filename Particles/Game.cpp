@@ -27,20 +27,18 @@ void Game::processEvents() {
 
 //handle movement
 void Game::update() {
-    //if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-    //    rightPaddle.moveUp();
-    //}
-    //else if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Down))) {
-    //    rightPaddle.moveDown();
-    //}
     for (size_t i = 0; i < m_vParticles.size(); i++)
     {
         m_vParticles[i].moveParticle();
         m_vParticles[i].collideWithScreen();
 
-        Particle particle1 = m_vParticles[i];
-        Particle particle2 = m_vParticles[i + 1];
-        collideWithParticles(particle1, particle2);
+        for (size_t j = 0; j < m_vParticles.size(); j++)
+        {
+            if (i != j) // don't compare the the same element
+            {
+                collideWithParticles(m_vParticles[i], m_vParticles[j]);
+            }
+        }
     }
 }
 
@@ -110,12 +108,12 @@ void Game::collideWithParticles(Particle particle1, Particle particle2)
 
     float distX = particle1.getParticlePosition().x - particle2.getParticlePosition().x;
     float distY = particle1.getParticlePosition().y - particle2.getParticlePosition().y;
-    float distance = sqrt((distX * distX) + (distY * distY));
+    float distance = (distX * distX) + (distY * distY);
+    float combinedRadii = particle1.getRadius() + particle2.getRadius();
 
-    if (distance <= particle1.getRadius() + particle2.getRadius())
+    if (distance <= combinedRadii)
     {
-        particle1.setColour(sf::Color::Red);
-        particle2.setColour(sf::Color::Red);
+        std::cout << "Colliding";
     }
 }
 
