@@ -22,24 +22,36 @@ void Particle::collideWithScreen()
 	// Screen left and right collision
 	if ((particlePosition.x + radius) == K_WINDOWXY.x)
 	{
-		setParticlePosition(particlePosition.x - 1, particlePosition.y);
+		// Right
+		//setParticlePosition(particlePosition.x - 1, particlePosition.y);
+		setDirection(K_UPLEFT); // OR K_DOWNRIGHT?
+		moveParticle();
 		setIsCollidingWithScreen(true);
 	}
 	else if ((particlePosition.x - radius*2) == 0)
 	{
-		setParticlePosition(particlePosition.x + 1, particlePosition.y);
+		// Left
+		//setParticlePosition(particlePosition.x + 1, particlePosition.y);
+		setDirection(K_UPRIGHT);	// OR K_DOWNRIGHT?
+		moveParticle();
 		setIsCollidingWithScreen(true);
 	}
 
 	// Screen top and bottom collision
 	if ((particlePosition.y + radius) == K_WINDOWXY.y)
 	{
-		setParticlePosition(particlePosition.x, particlePosition.y - 1);
+		// Bottom
+		//setParticlePosition(particlePosition.x, particlePosition.y - 1);
+		setDirection(K_UPLEFT);	// OR UPRIGHT
+		moveParticle();
 		setIsCollidingWithScreen(true);
 	}
 	else if ((particlePosition.y - radius*2) == 0)
 	{
-		setParticlePosition(particlePosition.x, particlePosition.y + 1);
+		// Top
+		//setParticlePosition(particlePosition.x, particlePosition.y + 1);
+		setDirection(K_DOWNLEFT);	// OR DOWNRIGHT
+		moveParticle();
 		setIsCollidingWithScreen(true);
 	}
 	else {
