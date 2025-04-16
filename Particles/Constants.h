@@ -7,7 +7,7 @@
 
 // CONSTANTS
 const sf::Vector2<int> K_WINDOWXY = { 800, 600 };
-const int K_NUMPARTICLES = 10;
+const int K_NUMPARTICLES = 100;
 const float K_PARTICLERADIUS = 5.f;
 const float K_PARTICLEVELOCITY = 20.f;
 

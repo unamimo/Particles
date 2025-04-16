@@ -32,12 +32,11 @@ void Game::update() {
         m_vParticles[i].moveParticle();
         m_vParticles[i].collideWithScreen();
 
-        bool isColliding = m_vParticles[i].getIsCollidingWithScreen();
-        if (isColliding == true)
-        {
-            std::cout << "Touching screen!";
-            bounceOffScreen(m_vParticles[i]);
-        }
+        //bool isColliding = m_vParticles[i].getIsCollidingWithScreen();
+        //if (isColliding == true)
+        //{
+        //    std::cout << "Touching screen!";
+        //}
 
         // for checking collission between two particles
         for (size_t j = 0; j < m_vParticles.size(); j++)
@@ -123,12 +122,6 @@ void Game::collideWithParticles(Particle particle1, Particle particle2)
     {
         std::cout << "Colliding";
     }
-}
-
-void Game::bounceOffScreen(Particle particle)
-{
-    //particle.setDirection(directionMap.at(0));
-    //particle.moveParticle();
 }
 
 int Game::getRandomNum(int lowerRange, int upperRange)

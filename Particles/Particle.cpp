@@ -59,6 +59,12 @@ void Particle::collideWithScreen()
 	}
 }
 
+void Particle::bounceOffScreen(sf::Vector2i dir)
+{
+	setDirection(dir);	// OR UPRIGHT
+	moveParticle();
+}
+
 sf::CircleShape Particle::getShape()
 {
 	return particleShape;
