@@ -23,13 +23,13 @@ void Particle::collideWithScreen()
 	if ((particlePosition.x + radius) == K_WINDOWXY.x)
 	{
 		// Right
-		bounceOffScreen(K_UPLEFT); // OR K_DOWNRIGHT?
+		bounceOffScreen(Helpers::getCollisionAngle("Right")); // OR K_DOWNRIGHT?
 		setIsCollidingWithScreen(true);
 	}
 	else if ((particlePosition.x - radius*2) == 0)
 	{
 		// Left
-		bounceOffScreen(K_UPRIGHT);	// OR K_DOWNRIGHT?
+		bounceOffScreen(Helpers::getCollisionAngle("Left"));	
 		setIsCollidingWithScreen(true);
 	}
 
@@ -37,13 +37,13 @@ void Particle::collideWithScreen()
 	if ((particlePosition.y + radius) == K_WINDOWXY.y)
 	{
 		// Bottom
-		bounceOffScreen(K_UPLEFT); // OR UPRIGHT
+		bounceOffScreen(Helpers::getCollisionAngle("Down")); 
 		setIsCollidingWithScreen(true);
 	}
 	else if ((particlePosition.y - radius*2) == 0)
 	{
 		// Top
-		bounceOffScreen(K_DOWNLEFT);	// OR DOWNRIGHT
+		bounceOffScreen(Helpers::getCollisionAngle("Up"));	// OR DOWNRIGHT
 		setIsCollidingWithScreen(true);
 	}
 	else {

@@ -78,9 +78,9 @@ void Game::init()
     {
         //random co-oordinates
         // convert int to float now, but will later on accept floats
-        sf::Vector2f randPos = { static_cast<float>(getRandomNum(0, K_WINDOWXY.x)),  static_cast<float>(getRandomNum(0, K_WINDOWXY.y)) };
+        sf::Vector2f randPos = { static_cast<float>(Helpers::getRandomNum(0, K_WINDOWXY.x)),  static_cast<float>(Helpers::getRandomNum(0, K_WINDOWXY.y)) };
 
-        createParticle(getRandomColour(), randPos, K_PARTICLERADIUS, K_PARTICLEVELOCITY, getRandomDirection());
+        createParticle(Helpers::getRandomColour(), randPos, K_PARTICLERADIUS, K_PARTICLEVELOCITY, Helpers::getRandomDirection());
     }
 }
 
@@ -124,29 +124,29 @@ void Game::collideWithParticles(Particle particle1, Particle particle2)
     }
 }
 
-int Game::getRandomNum(int lowerRange, int upperRange)
-{
-    //generate random number that only regenerates on new function call
-    //float randomNum = (rand() % upperRange) + 1;
-
-    //https://stackoverflow.com/questions/13445688/how-to-generate-a-random-number-in-c
-    std::random_device dev;
-    std::mt19937 rng(dev());
-    std::uniform_int_distribution<std::mt19937::result_type> dist(lowerRange, upperRange); // distribution
-
-    return dist(rng);
-}
-
-sf::Color Game::getRandomColour()
-{
-    int colourKey = getRandomNum(0, colourMap.size() - 1);
-
-    return colourMap.at(colourKey);
-}
-
-sf::Vector2<int> Game::getRandomDirection()
-{
-    int directionKey = getRandomNum(0, directionMap.size() - 1);
-
-    return directionMap.at(directionKey);
-}
+//int Game::getRandomNum(int lowerRange, int upperRange)
+//{
+//    //generate random number that only regenerates on new function call
+//    //float randomNum = (rand() % upperRange) + 1;
+//
+//    //https://stackoverflow.com/questions/13445688/how-to-generate-a-random-number-in-c
+//    std::random_device dev;
+//    std::mt19937 rng(dev());
+//    std::uniform_int_distribution<std::mt19937::result_type> dist(lowerRange, upperRange); // distribution
+//
+//    return dist(rng);
+//}
+//
+//sf::Color Game::getRandomColour()
+//{
+//    int colourKey = getRandomNum(0, colourMap.size() - 1);
+//
+//    return colourMap.at(colourKey);
+//}
+//
+//sf::Vector2<int> Game::getRandomDirection()
+//{
+//    int directionKey = getRandomNum(0, directionMap.size() - 1);
+//
+//    return directionMap.at(directionKey);
+//}

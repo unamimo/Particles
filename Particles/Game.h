@@ -6,6 +6,7 @@
 #include "Particle.h"
 #include "Constants.h"
 #include <random>
+//#include "Helpers.h"
 
 class Game {
 public:
@@ -21,9 +22,9 @@ private:
 	void createParticle(sf::Color colour, sf::Vector2f startPos, float radius, float velocity, sf::Vector2i direction);
 	void collideWithParticles(Particle particle1, Particle particle2); // check collission with any other particles
 
-	int getRandomNum(int lowerRange, int upperRange);
-	sf::Color getRandomColour();
-	sf::Vector2<int> getRandomDirection();
+	//int getRandomNum(int lowerRange, int upperRange);
+	//sf::Color getRandomColour();
+	//sf::Vector2<int> getRandomDirection();
 
 	
 	sf::RenderWindow window = sf::RenderWindow (sf::VideoMode(K_WINDOWXY.x, K_WINDOWXY.y), "Particles");
