@@ -32,12 +32,6 @@ void Game::update() {
         m_vParticles[i].moveParticle();
         m_vParticles[i].collideWithScreen();
 
-        //bool isColliding = m_vParticles[i].getIsCollidingWithScreen();
-        //if (isColliding == true)
-        //{
-        //    std::cout << "Touching screen!";
-        //}
-
         // for checking collission between two particles
         for (size_t j = 0; j < m_vParticles.size(); j++)
         {
@@ -56,8 +50,6 @@ void Game::render() {
 
     // Draw Loop
     /////////////////////////
-    //window.draw(m_particle.getShape());
-    //window.draw(m_particle2.getShape());
     for (size_t i = 0; i < m_vParticles.size(); i++)
     {
         window.draw(m_vParticles[i].getShape());
@@ -70,10 +62,6 @@ void Game::render() {
 
 void Game::init()
 {
-    //createParticle(sf::Color::Green, { 200, 100 }, 10.f, 20.f);
-    //createParticle(sf::Color::Blue, { 400, 239 }, 30.f, 20.f);
-    //createParticle(sf::Color::Red, { 100, 500 }, 5.f, 20.f);
-
     for (size_t i = 0; i < K_NUMPARTICLES; i++)
     {
         //random co-oordinates
@@ -101,18 +89,6 @@ void Game::createParticle(sf::Color colour, sf::Vector2f startPos, float radius,
 //https://www.jeffreythompson.org/collision-detection/circle-circle.php
 void Game::collideWithParticles(Particle particle1, Particle particle2)
 {
-    // check one particle to see if it collides with any other paricle in the array
-    //for (size_t i = 0; i < m_vParticles.size(); i++)
-    //{
-    //    Particle circle1 = m_vParticles[i];
-    //    Particle circle2;
-
-
-    //}
-
-    //sf::Vector2f otherPos;
-    //sf::Vector2f otherPos;
-
     float distX = particle1.getParticlePosition().x - particle2.getParticlePosition().x;
     float distY = particle1.getParticlePosition().y - particle2.getParticlePosition().y;
     float distance = (distX * distX) + (distY * distY);
