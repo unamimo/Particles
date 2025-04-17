@@ -23,17 +23,13 @@ void Particle::collideWithScreen()
 	if ((particlePosition.x + radius) == K_WINDOWXY.x)
 	{
 		// Right
-		//setParticlePosition(particlePosition.x - 1, particlePosition.y);
-		setDirection(K_UPLEFT); // OR K_DOWNRIGHT?
-		moveParticle();
+		bounceOffScreen(K_UPLEFT); // OR K_DOWNRIGHT?
 		setIsCollidingWithScreen(true);
 	}
 	else if ((particlePosition.x - radius*2) == 0)
 	{
 		// Left
-		//setParticlePosition(particlePosition.x + 1, particlePosition.y);
-		setDirection(K_UPRIGHT);	// OR K_DOWNRIGHT?
-		moveParticle();
+		bounceOffScreen(K_UPRIGHT);	// OR K_DOWNRIGHT?
 		setIsCollidingWithScreen(true);
 	}
 
@@ -41,17 +37,13 @@ void Particle::collideWithScreen()
 	if ((particlePosition.y + radius) == K_WINDOWXY.y)
 	{
 		// Bottom
-		//setParticlePosition(particlePosition.x, particlePosition.y - 1);
-		setDirection(K_UPLEFT);	// OR UPRIGHT
-		moveParticle();
+		bounceOffScreen(K_UPLEFT); // OR UPRIGHT
 		setIsCollidingWithScreen(true);
 	}
 	else if ((particlePosition.y - radius*2) == 0)
 	{
 		// Top
-		//setParticlePosition(particlePosition.x, particlePosition.y + 1);
-		setDirection(K_DOWNLEFT);	// OR DOWNRIGHT
-		moveParticle();
+		bounceOffScreen(K_DOWNLEFT);	// OR DOWNRIGHT
 		setIsCollidingWithScreen(true);
 	}
 	else {
