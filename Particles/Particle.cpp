@@ -11,8 +11,8 @@ Particle::Particle(float startX, float startY)
 
 void Particle::moveParticle()
 {
-	float movePosX = getParticlePosition().x + getDirection().x;
-	float movePosY = getParticlePosition().y + getDirection().y;
+	float movePosX = getParticlePosition().x + (getDirection().x * 5.f);
+	float movePosY = getParticlePosition().y + (getDirection().y * 5.f);
 
 	setParticlePosition(movePosX, movePosY);
 }
@@ -20,30 +20,34 @@ void Particle::moveParticle()
 void Particle::collideWithScreen()
 {
 	// Screen left and right collision
-	if ((particlePosition.x + radius) == K_WINDOWXY.x)
+	if ((getParticlePosition().x + getRadius()) == K_WINDOWXY.x)
 	{
 		// Right
 		bounceOffScreen(Helpers::getCollisionAngle("Right")); // OR K_DOWNRIGHT?
+		std::cout << "Collidng right";
 		setIsCollidingWithScreen(true);
 	}
-	else if ((particlePosition.x - radius*2) == 0)
+	else if ((getParticlePosition().x - getRadius()*2) == 0)
 	{
 		// Left
-		bounceOffScreen(Helpers::getCollisionAngle("Left"));	
+		bounceOffScreen(Helpers::getCollisionAngle("Left"));
+		std::cout << "Collidng left";
 		setIsCollidingWithScreen(true);
 	}
 
 	// Screen top and bottom collision
-	if ((particlePosition.y + radius) == K_WINDOWXY.y)
+	if ((getParticlePosition().y + getRadius()) == K_WINDOWXY.y)
 	{
 		// Bottom
 		bounceOffScreen(Helpers::getCollisionAngle("Down")); 
+		std::cout << "Collidng down";
 		setIsCollidingWithScreen(true);
 	}
-	else if ((particlePosition.y - radius*2) == 0)
+	else if ((getParticlePosition().y - getRadius()*2) == 0)
 	{
 		// Top
 		bounceOffScreen(Helpers::getCollisionAngle("Up"));	// OR DOWNRIGHT
+		std::cout << "Collidng up";
 		setIsCollidingWithScreen(true);
 	}
 	else {
@@ -54,12 +58,20 @@ void Particle::collideWithScreen()
 void Particle::bounceOffScreen(sf::Vector2i dir)
 {
 	setDirection(dir);	// OR UPRIGHT
+	//setVelocity({dir.x * getSpeed(), dir.y * getSpeed()});
 	moveParticle();
 }
 
 sf::CircleShape Particle::getShape()
 {
 	return particleShape;
+}
+
+sf::Vector2f Particle::getVelocity()
+{
+	float velocityX = getSpeed() * getDirection().x;
+	float velocityY = getSpeed() * getDirection().y;
+	return {velocityX, velocityY};
 }
 
 void Particle::setParticlePosition(float posX, float posY)
