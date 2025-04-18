@@ -23,16 +23,14 @@ void Particle::collideWithScreen()
 	if ((getParticlePosition().x + getRadius()) >= K_WINDOWXY.x)
 	{
 		// Right
-		bounceOffScreen(Helpers::getCollisionAngle("Right")); // OR K_DOWNRIGHT?
-		std::cout << "Collidng right";
-		setIsCollidingWithScreen(true);
+		bounceOffScreen(Helpers::getCollisionAngle("Right")); 
+		//setIsCollidingWithScreen(true);
 	}
 	else if ((getParticlePosition().x - getRadius()*2) <= 0)
 	{
 		// Left
 		bounceOffScreen(Helpers::getCollisionAngle("Left"));
-		std::cout << "Collidng left";
-		setIsCollidingWithScreen(true);
+		//setIsCollidingWithScreen(true);
 	}
 
 	// Screen top and bottom collision
@@ -40,19 +38,17 @@ void Particle::collideWithScreen()
 	{
 		// Bottom
 		bounceOffScreen(Helpers::getCollisionAngle("Down")); 
-		std::cout << "Collidng down";
-		setIsCollidingWithScreen(true);
+		//setIsCollidingWithScreen(true);
 	}
 	else if ((getParticlePosition().y - getRadius()*2) <= 0)
 	{
 		// Top
 		bounceOffScreen(Helpers::getCollisionAngle("Up"));	// OR DOWNRIGHT
-		std::cout << "Collidng up";
-		setIsCollidingWithScreen(true);
+		//setIsCollidingWithScreen(true);
 	}
-	else {
-		setIsCollidingWithScreen(false);
-	}
+	//else {
+	//	//setIsCollidingWithScreen(false);
+	//}
 }
 
 void Particle::bounceOffScreen(sf::Vector2i dir)

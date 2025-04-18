@@ -21,7 +21,7 @@ public:
 	sf::Vector2f getVelocity();
 	float getSpeed() { return speed; }
 	sf::Vector2i getDirection() { return direction; }
-	bool getIsCollidingWithScreen() { return isCollidingWithScreen; }
+	//bool getIsCollidingWithScreen() { return isCollidingWithScreen; }
 
 	void setParticlePosition(float posX, float posY);
 	//void setColour(sf::Color _colour) { colour = _colour; }
@@ -31,7 +31,7 @@ public:
 	void setVelocity(sf::Vector2f _velocity) { velocity = _velocity; }
 	void setSpeed(float _speed) { speed = _speed; }
 	void setDirection(sf::Vector2i _direction) { direction = _direction; }
-	void setIsCollidingWithScreen(bool _isCollidingWithScreen) { isCollidingWithScreen = _isCollidingWithScreen;  }
+	//void setIsCollidingWithScreen(bool _isCollidingWithScreen) { isCollidingWithScreen = _isCollidingWithScreen;  }
 private:
 	sf::CircleShape particleShape;
 	sf::Vector2f particlePosition;
@@ -40,7 +40,7 @@ private:
 	sf::Vector2f velocity;			// speed * direction
 	float speed;
 	sf::Vector2i direction;
-	bool isCollidingWithScreen = false;
+	//bool isCollidingWithScreen = false;
 };
 
 
