@@ -7,9 +7,9 @@
 
 // CONSTANTS
 const sf::Vector2<int> K_WINDOWXY = { 800, 600 };
-const int K_NUMPARTICLES = 2;
+const int K_NUMPARTICLES = 10;
 const float K_PARTICLERADIUS = 5.f;
-const float K_PARTICLESPEED = 10.f;
+const float K_PARTICLESPEED = 5.f;
 
 const sf::Vector2<int> K_UP = { 0, -1 };
 const sf::Vector2<int> K_UPRIGHT = { 1, -1 };

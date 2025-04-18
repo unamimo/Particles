@@ -11,8 +11,8 @@ Particle::Particle(float startX, float startY)
 
 void Particle::moveParticle()
 {
-	float movePosX = getParticlePosition().x + (getDirection().x * 5.f);
-	float movePosY = getParticlePosition().y + (getDirection().y * 5.f);
+	float movePosX = getParticlePosition().x + (getDirection().x * getSpeed() );
+	float movePosY = getParticlePosition().y + (getDirection().y * getSpeed() );
 
 	setParticlePosition(movePosX, movePosY);
 }
@@ -20,14 +20,14 @@ void Particle::moveParticle()
 void Particle::collideWithScreen()
 {
 	// Screen left and right collision
-	if ((getParticlePosition().x + getRadius()) == K_WINDOWXY.x)
+	if ((getParticlePosition().x + getRadius()) >= K_WINDOWXY.x)
 	{
 		// Right
 		bounceOffScreen(Helpers::getCollisionAngle("Right")); // OR K_DOWNRIGHT?
 		std::cout << "Collidng right";
 		setIsCollidingWithScreen(true);
 	}
-	else if ((getParticlePosition().x - getRadius()*2) == 0)
+	else if ((getParticlePosition().x - getRadius()*2) <= 0)
 	{
 		// Left
 		bounceOffScreen(Helpers::getCollisionAngle("Left"));
@@ -36,14 +36,14 @@ void Particle::collideWithScreen()
 	}
 
 	// Screen top and bottom collision
-	if ((getParticlePosition().y + getRadius()) == K_WINDOWXY.y)
+	if ((getParticlePosition().y + getRadius()) >= K_WINDOWXY.y)
 	{
 		// Bottom
 		bounceOffScreen(Helpers::getCollisionAngle("Down")); 
 		std::cout << "Collidng down";
 		setIsCollidingWithScreen(true);
 	}
-	else if ((getParticlePosition().y - getRadius()*2) == 0)
+	else if ((getParticlePosition().y - getRadius()*2) <= 0)
 	{
 		// Top
 		bounceOffScreen(Helpers::getCollisionAngle("Up"));	// OR DOWNRIGHT
@@ -59,7 +59,7 @@ void Particle::bounceOffScreen(sf::Vector2i dir)
 {
 	setDirection(dir);	// OR UPRIGHT
 	//setVelocity({dir.x * getSpeed(), dir.y * getSpeed()});
-	moveParticle();
+	//moveParticle();
 }
 
 sf::CircleShape Particle::getShape()
