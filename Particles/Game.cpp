@@ -67,7 +67,7 @@ void Game::init()
         //random co-oordinates
         // convert int to float now, but will later on accept floats
         sf::Vector2f randPos = { static_cast<float>(Helpers::getRandomNum(0, K_WINDOWXY.x)),  static_cast<float>(Helpers::getRandomNum(0, K_WINDOWXY.y)) };
-        float randomSpeed = Helpers::getRandomNum(3.f, 8.f);
+        float randomSpeed = Helpers::getRandomNum(K_PARTICLESPEEDLOWER, K_PARTICLESPEEDUPPER);
 
         createParticle(Helpers::getRandomColour(), randPos, K_PARTICLERADIUS, randomSpeed, Helpers::getRandomDirection());
     }
@@ -99,6 +99,8 @@ void Game::collideWithParticles(Particle particle1, Particle particle2)
     if (distance <= combinedRadii)
     {
         std::cout << "Colliding";
+        particle1.setColour(sf::Color::Red);
+        particle2.setColour(sf::Color::Red);
     }
 }
 
