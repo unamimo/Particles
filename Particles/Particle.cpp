@@ -11,8 +11,8 @@ Particle::Particle(float startX, float startY)
 
 void Particle::moveParticle()
 {
-	float movePosX = getParticlePosition().x + (getDirection().x * getSpeed() );
-	float movePosY = getParticlePosition().y + (getDirection().y * getSpeed() );
+	float movePosX = getParticlePosition().x + (getVelocity().x );
+	float movePosY = getParticlePosition().y + (getVelocity().y );
 
 	setParticlePosition(movePosX, movePosY);
 }
