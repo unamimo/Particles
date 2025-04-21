@@ -54,7 +54,7 @@ void Particle::collideWithScreen()
 void Particle::bounceOffScreen(sf::Vector2i dir)
 {
 	setDirection(dir);
-	//setVelocity({dir.x * getSpeed(), dir.y * getSpeed()});
+	setVelocity({dir.x * getSpeed(), dir.y * getSpeed()});
 	//moveParticle();
 }
 
@@ -70,9 +70,7 @@ sf::CircleShape Particle::getShape()
 
 sf::Vector2f Particle::getVelocity()
 {
-	float velocityX = getSpeed() * getDirection().x;
-	float velocityY = getSpeed() * getDirection().y;
-	return {velocityX, velocityY};
+	return velocity;
 }
 
 void Particle::setParticlePosition(float posX, float posY)

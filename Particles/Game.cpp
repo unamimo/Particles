@@ -84,7 +84,7 @@ void Game::createParticle(sf::Color colour, sf::Vector2f startPos, float radius,
     m_particle.setSpeed(speed);
     m_particle.setDirection(direction);
     m_particle.setOrigin({ radius, radius });
-    //m_particle.setVelocity({ speed * direction.x,  speed * direction.y });
+    m_particle.setVelocity({ speed * direction.x,  speed * direction.y });
 
     m_vParticles.push_back(m_particle);
 }
@@ -100,37 +100,31 @@ void Game::checkParticleCollision(Particle& particle1, Particle& particle2)
 
     if (distance < (combinedRadii))
     {
-        std::cout << "Colliding";
-        particle1.collideWithParticle();
-        particle2.collideWithParticle();
-        //particle1.setRadius(20.f);
-        //particle2.setRadius(20.f);
+        //std::cout << "Colliding";
+        //particle1.collideWithParticle();
+        //particle2.collideWithParticle();
+
+        // collision resolution
+        // https://www.101computing.net/elastic-collision-in-a-pool-game/
+        float dist = (distX * distX) + (distY * distY);
+        sf::Vector2f differenceInVelocity = (particle1.getVelocity() - particle2.getVelocity());
+        float dot = distX * differenceInVelocity.x + distY * differenceInVelocity.y;
+
+        float scalar = dot / dist;
+        sf::Vector2f collision = { scalar * distX, scalar * distY };
+
+        particle1.setVelocity(particle1.getVelocity() - collision);
+        particle2.setVelocity(particle2.getVelocity() - collision);
     }
 }
 
-//int Game::getRandomNum(int lowerRange, int upperRange)
+//void Game::resolveParticleCollision(Particle& particle1, Particle& particle2, float distance)
 //{
-//    //generate random number that only regenerates on new function call
-//    //float randomNum = (rand() % upperRange) + 1;
+//    sf::Vector2i particle1Dir = particle1.getDirection();
+//    sf::Vector2i particle2Dir = particle2.getDirection();
 //
-//    //https://stackoverflow.com/questions/13445688/how-to-generate-a-random-number-in-c
-//    std::random_device dev;
-//    std::mt19937 rng(dev());
-//    std::uniform_int_distribution<std::mt19937::result_type> dist(lowerRange, upperRange); // distribution
+//    if (particle1Dir == K_UP)
+//    {
 //
-//    return dist(rng);
-//}
-//
-//sf::Color Game::getRandomColour()
-//{
-//    int colourKey = getRandomNum(0, colourMap.size() - 1);
-//
-//    return colourMap.at(colourKey);
-//}
-//
-//sf::Vector2<int> Game::getRandomDirection()
-//{
-//    int directionKey = getRandomNum(0, directionMap.size() - 1);
-//
-//    return directionMap.at(directionKey);
+//    }
 //}
