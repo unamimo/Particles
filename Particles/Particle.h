@@ -13,6 +13,7 @@ public:
 	void moveParticle();
 	void collideWithScreen();
 	void bounceOffScreen(sf::Vector2i dir);
+	void collideWithParticle();
 
 	sf::CircleShape getShape();
 	sf::Vector2f getParticlePosition() { return particlePosition; }
@@ -28,6 +29,7 @@ public:
 	void setColour(sf::Color _colour);
 	//void setRadius(float _radius) { radius = _radius; }
 	void setRadius(float _radius);
+	void setOrigin(sf::Vector2f _origin);
 	void setVelocity(sf::Vector2f _velocity) { velocity = _velocity; }
 	void setSpeed(float _speed) { speed = _speed; }
 	void setDirection(sf::Vector2i _direction) { direction = _direction; }
@@ -37,6 +39,7 @@ private:
 	sf::Vector2f particlePosition;
 	sf::Color colour;
 	float radius;
+	sf::Vector2f origin;
 	sf::Vector2f velocity;			// speed * direction
 	float speed;
 	sf::Vector2i direction;

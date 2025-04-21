@@ -37,7 +37,7 @@ void Game::update() {
         {
             if (i != j) // don't compare the the same element
             {
-                collideWithParticles(m_vParticles[i], m_vParticles[j]);
+                checkParticleCollision(m_vParticles[i], m_vParticles[j]);
             }
         }
     }
@@ -83,24 +83,28 @@ void Game::createParticle(sf::Color colour, sf::Vector2f startPos, float radius,
     m_particle.setRadius(radius);
     m_particle.setSpeed(speed);
     m_particle.setDirection(direction);
+    m_particle.setOrigin({ radius, radius });
     //m_particle.setVelocity({ speed * direction.x,  speed * direction.y });
 
     m_vParticles.push_back(m_particle);
 }
 
 //https://www.jeffreythompson.org/collision-detection/circle-circle.php
-void Game::collideWithParticles(Particle particle1, Particle particle2)
+void Game::checkParticleCollision(Particle& particle1, Particle& particle2)
 {
+    float offSet = 1.1f;    // Prevent incorrect collision detection
     float distX = particle1.getParticlePosition().x - particle2.getParticlePosition().x;
     float distY = particle1.getParticlePosition().y - particle2.getParticlePosition().y;
-    float distance = (distX * distX) + (distY * distY);
-    float combinedRadii = particle1.getRadius() + particle2.getRadius();
+    float distance = sqrt((distX * distX) + (distY * distY));
+    float combinedRadii = (particle1.getRadius() + particle2.getRadius());
 
-    if (distance <= combinedRadii)
+    if (distance < (combinedRadii))
     {
         std::cout << "Colliding";
-        particle1.setColour(sf::Color::Red);
-        particle2.setColour(sf::Color::Red);
+        particle1.collideWithParticle();
+        particle2.collideWithParticle();
+        //particle1.setRadius(20.f);
+        //particle2.setRadius(20.f);
     }
 }
 

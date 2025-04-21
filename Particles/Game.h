@@ -20,18 +20,12 @@ private:
 	void init();
 
 	void createParticle(sf::Color colour, sf::Vector2f startPos, float radius, float velocity, sf::Vector2i direction);
-	void collideWithParticles(Particle particle1, Particle particle2); // check collission with any other particles
-
-	//int getRandomNum(int lowerRange, int upperRange);
-	//sf::Color getRandomColour();
-	//sf::Vector2<int> getRandomDirection();
-
+	void checkParticleCollision(Particle& particle1, Particle& particle2); // check collission with any other particles
 	
 	sf::RenderWindow window = sf::RenderWindow (sf::VideoMode(K_WINDOWXY.x, K_WINDOWXY.y), "Particles");
 	sf::Vector2u windowSize = window.getSize();
 
 	std::vector<Particle> m_vParticles;	// vector to store all particles
-	//sf::Vector2i randomDir = getRandomDirection();
 
 };
 

@@ -53,9 +53,14 @@ void Particle::collideWithScreen()
 
 void Particle::bounceOffScreen(sf::Vector2i dir)
 {
-	setDirection(dir);	// OR UPRIGHT
+	setDirection(dir);
 	//setVelocity({dir.x * getSpeed(), dir.y * getSpeed()});
 	//moveParticle();
+}
+
+void Particle::collideWithParticle()
+{
+	setColour(sf::Color::Red);
 }
 
 sf::CircleShape Particle::getShape()
@@ -87,4 +92,10 @@ void Particle::setRadius(float _radius)
 {
 	radius = _radius;
 	particleShape.setRadius(radius);
+}
+
+void Particle::setOrigin(sf::Vector2f _origin)
+{
+	origin = _origin;
+	particleShape.setOrigin(origin.x, origin.y);
 }
