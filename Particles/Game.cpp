@@ -98,20 +98,20 @@ void Game::checkParticleCollision(Particle& particle1, Particle& particle2)
     float distance = sqrt((distX * distX) + (distY * distY));
     float combinedRadii = (particle1.getRadius() + particle2.getRadius());
 
+    // collision resolution
+    // https://www.101computing.net/elastic-collision-in-a-pool-game/
+    float dist = (distX * distX) + (distY * distY);
+    sf::Vector2f differenceInVelocity = (particle1.getVelocity() - particle2.getVelocity());
+    float dot = distX * differenceInVelocity.x + distY * differenceInVelocity.y;
+
+    float scalar = dot / dist;
+    sf::Vector2f collision = { scalar * distX, scalar * distY };
+
     if (distance < (combinedRadii))
     {
         //std::cout << "Colliding";
         //particle1.collideWithParticle();
         //particle2.collideWithParticle();
-
-        // collision resolution
-        // https://www.101computing.net/elastic-collision-in-a-pool-game/
-        float dist = (distX * distX) + (distY * distY);
-        sf::Vector2f differenceInVelocity = (particle1.getVelocity() - particle2.getVelocity());
-        float dot = distX * differenceInVelocity.x + distY * differenceInVelocity.y;
-
-        float scalar = dot / dist;
-        sf::Vector2f collision = { scalar * distX, scalar * distY };
 
         particle1.setVelocity(particle1.getVelocity() - collision);
         particle2.setVelocity(particle2.getVelocity() - collision);
