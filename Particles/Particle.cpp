@@ -24,13 +24,11 @@ void Particle::collideWithScreen()
 	{
 		// Right
 		bounceOffScreen(Helpers::getCollisionAngle("Right")); 
-		//setIsCollidingWithScreen(true);
 	}
 	else if ((getParticlePosition().x - getRadius()*2) <= 0)
 	{
 		// Left
 		bounceOffScreen(Helpers::getCollisionAngle("Left"));
-		//setIsCollidingWithScreen(true);
 	}
 
 	// Screen top and bottom collision
@@ -38,29 +36,18 @@ void Particle::collideWithScreen()
 	{
 		// Bottom
 		bounceOffScreen(Helpers::getCollisionAngle("Down")); 
-		//setIsCollidingWithScreen(true);
 	}
 	else if ((getParticlePosition().y - getRadius()*2) <= 0)
 	{
 		// Top
-		bounceOffScreen(Helpers::getCollisionAngle("Up"));	// OR DOWNRIGHT
-		//setIsCollidingWithScreen(true);
+		bounceOffScreen(Helpers::getCollisionAngle("Up"));
 	}
-	//else {
-	//	//setIsCollidingWithScreen(false);
-	//}
 }
 
 void Particle::bounceOffScreen(sf::Vector2i dir)
 {
 	setDirection(dir);
 	setVelocity({dir.x * getSpeed(), dir.y * getSpeed()});
-	//moveParticle();
-}
-
-void Particle::collideWithParticle()
-{
-	setColour(sf::Color::Red);
 }
 
 sf::CircleShape Particle::getShape()

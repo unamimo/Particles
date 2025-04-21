@@ -92,7 +92,6 @@ void Game::createParticle(sf::Color colour, sf::Vector2f startPos, float radius,
 //https://www.jeffreythompson.org/collision-detection/circle-circle.php
 void Game::checkParticleCollision(Particle& particle1, Particle& particle2)
 {
-    float offSet = 1.1f;    // Prevent incorrect collision detection
     float distX = particle1.getParticlePosition().x - particle2.getParticlePosition().x;
     float distY = particle1.getParticlePosition().y - particle2.getParticlePosition().y;
     float distance = sqrt((distX * distX) + (distY * distY));
@@ -109,22 +108,7 @@ void Game::checkParticleCollision(Particle& particle1, Particle& particle2)
 
     if (distance < (combinedRadii))
     {
-        //std::cout << "Colliding";
-        //particle1.collideWithParticle();
-        //particle2.collideWithParticle();
-
         particle1.setVelocity(particle1.getVelocity() - collision);
         particle2.setVelocity(particle2.getVelocity() - collision);
     }
 }
-
-//void Game::resolveParticleCollision(Particle& particle1, Particle& particle2, float distance)
-//{
-//    sf::Vector2i particle1Dir = particle1.getDirection();
-//    sf::Vector2i particle2Dir = particle2.getDirection();
-//
-//    if (particle1Dir == K_UP)
-//    {
-//
-//    }
-//}
