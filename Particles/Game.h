@@ -6,6 +6,7 @@
 #include "Particle.h"
 #include "Constants.h"
 #include <random>
+#include <thread>		// threading
 //#include "Helpers.h"
 
 class Game {
