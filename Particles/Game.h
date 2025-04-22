@@ -6,7 +6,7 @@
 #include "Particle.h"
 #include "Constants.h"
 #include <random>
-#include <thread>		// threading
+#include <thread>		// threading, https://iamsorush.com/posts/cpp-std-thread/
 //#include "Helpers.h"
 
 class Game {

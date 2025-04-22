@@ -10,8 +10,14 @@ void Game::run() {
 
     while (window.isOpen())
     {
-        processEvents();
-        update();
+        std::thread t1(&Game::processEvents, this);
+        //processEvents();
+        std::thread t2(&Game::update, this);
+        //update();
+
+        t1.join();
+        t2.join();
+
         render();
     }
 }
