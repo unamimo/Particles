@@ -7,6 +7,7 @@
 #include "Constants.h"
 #include <random>
 #include <thread>		// threading, https://iamsorush.com/posts/cpp-std-thread/
+#include <functional>
 //#include "Helpers.h"
 
 class Game {
@@ -16,7 +17,7 @@ public:
 
 private:
 	void processEvents();
-	void update();
+	void update(int threadItr);
 	void render();
 	void init();
 
@@ -28,6 +29,8 @@ private:
 	sf::Vector2u windowSize = window.getSize();
 
 	std::vector<Particle> m_vParticles;	// vector to store all particles
+
+	std::vector<std::thread> m_vThreads;
 
 };
 

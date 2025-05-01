@@ -8,15 +8,28 @@ Game::Game()
 void Game::run() {
     init();
 
+    // member functions
+    // https://stackoverflow.com/questions/10673585/start-thread-with-member-function
+    // bind (with arguments)
+    // https://cplusplus.com/forum/general/171072/
     while (window.isOpen())
     {
-        std::thread t1(&Game::processEvents, this);
-        //processEvents();
-        std::thread t2(&Game::update, this);
-        //update();
+        //std::thread t1(&Game::processEvents, this);
+        processEvents();
 
-        t1.join();
-        t2.join();
+        // https://stackoverflow.com/questions/54551371/creating-thread-inside-a-for-loop-c
+        // update loop
+        for (size_t i = 0; i <= K_NUMTHREADS; i++) 
+        {
+            m_vThreads.emplace_back(std::bind(&Game::update, this, i));
+        }
+        for (size_t i = 0; i < m_vThreads.size(); i++)
+        {
+            if (m_vThreads[i].joinable())
+            {
+                m_vThreads[i].join();
+            }
+        }
 
         render();
     }
@@ -32,11 +45,11 @@ void Game::processEvents() {
 }
 
 //handle movement
-void Game::update() {
+void Game::update(int threadItr) {
     // split particle data evenly between threads
-    for (size_t k = 0; k <= K_NUMTHREADS; k++)
-    {
-        for (size_t i = 0; i < (m_vParticles.size() / K_NUMTHREADS) * k; i++)
+    //for (size_t k = 0; k <= K_NUMTHREADS; k++)
+    //{
+        for (size_t i = 0; i < (m_vParticles.size() / K_NUMTHREADS) * threadItr; i++)
         {
             m_vParticles[i].moveParticle();
             m_vParticles[i].collideWithScreen();
@@ -51,7 +64,7 @@ void Game::update() {
             }
             //updateParticleCollision(i);
         }
-    }
+    //}
 }
 
 //handle drawing
