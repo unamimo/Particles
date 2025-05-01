@@ -33,18 +33,23 @@ void Game::processEvents() {
 
 //handle movement
 void Game::update() {
-    for (size_t i = 0; i < m_vParticles.size(); i++)
+    // split particle data evenly between threads
+    for (size_t k = 0; k <= K_NUMTHREADS; k++)
     {
-        m_vParticles[i].moveParticle();
-        m_vParticles[i].collideWithScreen();
-
-        // for checking collission between two particles
-        for (size_t j = 0; j < m_vParticles.size(); j++)
+        for (size_t i = 0; i < (m_vParticles.size() / K_NUMTHREADS) * k; i++)
         {
-            if (i != j) // don't compare the the same element
+            m_vParticles[i].moveParticle();
+            m_vParticles[i].collideWithScreen();
+
+            // for checking collission between two particles
+            for (size_t j = 0; j < m_vParticles.size() / K_NUMTHREADS; j++)
             {
-                checkParticleCollision(m_vParticles[i], m_vParticles[j]);
+                if (i != j) // don't compare the the same element
+                {
+                    checkParticleCollision(m_vParticles[i], m_vParticles[j]);
+                }
             }
+            //updateParticleCollision(i);
         }
     }
 }
@@ -118,3 +123,14 @@ void Game::checkParticleCollision(Particle& particle1, Particle& particle2)
         particle2.setVelocity(particle2.getVelocity() - collision);
     }
 }
+
+//void Game::updateParticleCollision(size_t itr)
+//{
+//    for (size_t j = 0; j < m_vParticles.size(); j++)
+//    {
+//        if (itr != j) // don't compare the the same element
+//        {
+//            checkParticleCollision(m_vParticles[itr], m_vParticles[j]);
+//        }
+//    }
+//}
