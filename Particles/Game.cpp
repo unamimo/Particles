@@ -14,12 +14,11 @@ void Game::run() {
     // https://cplusplus.com/forum/general/171072/
     while (window.isOpen())
     {
-        //std::thread t1(&Game::processEvents, this);
         processEvents();
 
         // https://stackoverflow.com/questions/54551371/creating-thread-inside-a-for-loop-c
         // update loop
-        for (size_t i = 0; i <= K_NUMTHREADS; i++) 
+        for (size_t i = 1; i <= K_NUMTHREADS; i++) 
         {
             m_vThreads.emplace_back(std::bind(&Game::update, this, i));
         }
@@ -55,7 +54,7 @@ void Game::update(int threadItr) {
             m_vParticles[i].collideWithScreen();
 
             // for checking collission between two particles
-            for (size_t j = 0; j < m_vParticles.size() / K_NUMTHREADS; j++)
+            for (size_t j = 0; j < (m_vParticles.size() / K_NUMTHREADS) * threadItr; j++)
             {
                 if (i != j) // don't compare the the same element
                 {
