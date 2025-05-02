@@ -48,13 +48,18 @@ void Game::update(int threadItr) {
     // split particle data evenly between threads
     //for (size_t k = 0; k <= K_NUMTHREADS; k++)
     //{
-        for (size_t i = 0; i < (m_vParticles.size() / K_NUMTHREADS) * threadItr; i++)
+    // static cast to float to stop particles being skipped
+    float particlesPerThread = (static_cast<float>(m_vParticles.size()) / K_NUMTHREADS);
+    float start = particlesPerThread * (threadItr - 1);
+    float end = particlesPerThread * threadItr;
+
+        for (size_t i = start; i < end; i++)
         {
             m_vParticles[i].moveParticle();
             m_vParticles[i].collideWithScreen();
 
             // for checking collission between two particles
-            for (size_t j = 0; j < (m_vParticles.size() / K_NUMTHREADS) * threadItr; j++)
+            for (size_t j = start; j < end; j++)
             {
                 if (i != j) // don't compare the the same element
                 {
