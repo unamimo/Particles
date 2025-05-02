@@ -52,8 +52,8 @@ void Game::update(int threadItr) {
 
         for (size_t i = start; i < end; i++)
         {
-            m_vParticles[i].moveParticle();
-            m_vParticles[i].collideWithScreen();
+            m_vParticles[i]->moveParticle();
+            m_vParticles[i]->collideWithScreen();
 
             // for checking collission between two particles
             for (size_t j = 0; j < m_vParticles.size(); j++)
@@ -76,7 +76,7 @@ void Game::render() {
     /////////////////////////
     for (size_t i = 0; i < m_vParticles.size(); i++)
     {
-        window.draw(m_vParticles[i].getShape());
+        window.draw(m_vParticles[i]->getShape());
     }
     ////////////////////////
 
@@ -100,31 +100,31 @@ void Game::init()
 void Game::createParticle(sf::Color colour, sf::Vector2f startPos, float radius, float speed, sf::Vector2i direction)
 {
     // set particle start pos to middle of screen by default
-    Particle m_particle = Particle(windowSize.x / 2, windowSize.y / 2);
+    Particle* m_particle = new Particle(windowSize.x / 2, windowSize.y / 2);
 
-    m_particle.setColour(colour);
-    m_particle.setParticlePosition(startPos.x, startPos.y);
-    m_particle.setRadius(radius);
-    m_particle.setSpeed(speed);
-    m_particle.setDirection(direction);
-    m_particle.setOrigin({ radius, radius });
-    m_particle.setVelocity({ speed * direction.x,  speed * direction.y });
+    m_particle->setColour(colour);
+    m_particle->setParticlePosition(startPos.x, startPos.y);
+    m_particle->setRadius(radius);
+    m_particle->setSpeed(speed);
+    m_particle->setDirection(direction);
+    m_particle->setOrigin({ radius, radius });
+    m_particle->setVelocity({ speed * direction.x,  speed * direction.y });
 
     m_vParticles.push_back(m_particle);
 }
 
 //https://www.jeffreythompson.org/collision-detection/circle-circle.php
-void Game::checkParticleCollision(Particle& particle1, Particle& particle2)
+void Game::checkParticleCollision(Particle* particle1, Particle* particle2)
 {
-    float distX = particle1.getParticlePosition().x - particle2.getParticlePosition().x;
-    float distY = particle1.getParticlePosition().y - particle2.getParticlePosition().y;
+    float distX = particle1->getParticlePosition().x - particle2->getParticlePosition().x;
+    float distY = particle1->getParticlePosition().y - particle2->getParticlePosition().y;
     float distance = sqrt((distX * distX) + (distY * distY));
-    float combinedRadii = (particle1.getRadius() + particle2.getRadius());
+    float combinedRadii = (particle1->getRadius() + particle2->getRadius());
 
     // collision resolution
     // https://www.101computing.net/elastic-collision-in-a-pool-game/
     float dist = (distX * distX) + (distY * distY);
-    sf::Vector2f differenceInVelocity = (particle1.getVelocity() - particle2.getVelocity());
+    sf::Vector2f differenceInVelocity = (particle1->getVelocity() - particle2->getVelocity());
     float dot = distX * differenceInVelocity.x + distY * differenceInVelocity.y;
 
     float scalar = dot / dist;
@@ -132,9 +132,14 @@ void Game::checkParticleCollision(Particle& particle1, Particle& particle2)
 
     if (distance < (combinedRadii))
     {
-        particle1.setVelocity(particle1.getVelocity() - collision);
-        particle2.setVelocity(particle2.getVelocity() - collision);
+        particle1->setVelocity(particle1->getVelocity() - collision);
+        particle2->setVelocity(particle2->getVelocity() - collision);
     }
+}
+
+void Game::deleteParticle(Particle* m_particle)
+{
+    delete m_particle;
 }
 
 //void Game::updateParticleCollision(size_t itr)
