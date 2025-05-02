@@ -59,7 +59,7 @@ void Game::update(int threadItr) {
             m_vParticles[i].collideWithScreen();
 
             // for checking collission between two particles
-            for (size_t j = start; j < end; j++)
+            for (size_t j = 0; j < m_vParticles.size(); j++)
             {
                 if (i != j) // don't compare the the same element
                 {
