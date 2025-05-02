@@ -45,9 +45,6 @@ void Game::processEvents() {
 
 //handle movement
 void Game::update(int threadItr) {
-    // split particle data evenly between threads
-    //for (size_t k = 0; k <= K_NUMTHREADS; k++)
-    //{
     // static cast to float to stop particles being skipped
     float particlesPerThread = (static_cast<float>(m_vParticles.size()) / K_NUMTHREADS);
     float start = particlesPerThread * (threadItr - 1);
@@ -68,7 +65,6 @@ void Game::update(int threadItr) {
             }
             //updateParticleCollision(i);
         }
-    //}
 }
 
 //handle drawing
