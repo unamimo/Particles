@@ -18,6 +18,7 @@ void Game::run() {
 
         // https://stackoverflow.com/questions/54551371/creating-thread-inside-a-for-loop-c
         // update loop
+        m_vThreads.clear(); // clears thread vector each frame, stops number increasing in vector
         for (size_t i = 1; i <= K_NUMTHREADS; i++) 
         {
             m_vThreads.emplace_back(std::bind(&Game::update, this, i));
@@ -55,16 +56,9 @@ void Game::update(int threadItr) {
             m_vParticles[i]->moveParticle();
             m_vParticles[i]->collideWithScreen();
 
-            // for checking collission between two particles
-            for (size_t j = 0; j < m_vParticles.size(); j++)
-            {
-                if (i != j) // don't compare the the same element
-                {
-                    checkParticleCollision(m_vParticles[i], m_vParticles[j]);
-                }
-            }
-            //updateParticleCollision(i);
+            updateParticleCollision(i);
         }
+        
 }
 
 //handle drawing
@@ -142,13 +136,13 @@ void Game::deleteParticle(Particle* m_particle)
     delete m_particle;
 }
 
-//void Game::updateParticleCollision(size_t itr)
-//{
-//    for (size_t j = 0; j < m_vParticles.size(); j++)
-//    {
-//        if (itr != j) // don't compare the the same element
-//        {
-//            checkParticleCollision(m_vParticles[itr], m_vParticles[j]);
-//        }
-//    }
-//}
+void Game::updateParticleCollision(size_t itr)
+{
+    for (size_t j = 0; j < m_vParticles.size(); j++)
+    {
+        if (itr != j) // don't compare the the same element
+        {
+            checkParticleCollision(m_vParticles[itr], m_vParticles[j]);
+        }
+    }
+}
