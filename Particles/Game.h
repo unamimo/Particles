@@ -20,6 +20,7 @@ private:
 	void update(int threadItr);
 	void render();
 	void init();
+	void shutdown();
 
 	void createParticle(sf::Color colour, sf::Vector2f startPos, float radius, float velocity, sf::Vector2i direction);
 	void checkParticleCollision(Particle* particle1, Particle* particle2); // check collission with any other particles

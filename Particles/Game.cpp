@@ -33,6 +33,8 @@ void Game::run() {
 
         render();
     }
+
+    shutdown();
 }
 
 void Game::processEvents() {
@@ -91,6 +93,16 @@ void Game::init()
     }
 }
 
+void Game::shutdown()
+{
+    for (size_t i = 0; i < m_vParticles.size(); i++)
+    {
+        std::cout << "Deleting Particle: " << i;
+        delete m_vParticles[i];
+    }
+    m_vParticles.clear();
+}
+
 void Game::createParticle(sf::Color colour, sf::Vector2f startPos, float radius, float speed, sf::Vector2i direction)
 {
     // set particle start pos to middle of screen by default
@@ -133,7 +145,8 @@ void Game::checkParticleCollision(Particle* particle1, Particle* particle2)
 
 void Game::deleteParticle(Particle* m_particle)
 {
-    delete m_particle;
+    //delete m_particle;
+    //m_vParticles.erase(m_vParticles.begin() + m_particle)
 }
 
 void Game::updateParticleCollision(size_t itr)
