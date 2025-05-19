@@ -1,0 +1,22 @@
+﻿  Game.cpp
+C:\Users\Millie\Desktop\Particles\Particles\Particles\Game.cpp(70,73): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+C:\Users\Millie\Desktop\Particles\Particles\Particles\Game.cpp(70,51): warning C4244: 'argument': conversion from 'const float' to 'int', possible loss of data
+C:\Users\Millie\Desktop\Particles\Particles\Particles\Game.cpp(70,27): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Millie\Desktop\Particles\Particles\Particles\Game.cpp(79,67): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Millie\Desktop\Particles\Particles\Particles\Game.cpp(79,67): warning C4244:         with
+C:\Users\Millie\Desktop\Particles\Particles\Particles\Game.cpp(79,67): warning C4244:         [
+C:\Users\Millie\Desktop\Particles\Particles\Particles\Game.cpp(79,67): warning C4244:             T=unsigned int
+C:\Users\Millie\Desktop\Particles\Particles\Particles\Game.cpp(79,67): warning C4244:         ]
+C:\Users\Millie\Desktop\Particles\Particles\Particles\Game.cpp(79,49): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Millie\Desktop\Particles\Particles\Particles\Game.cpp(79,49): warning C4244:         with
+C:\Users\Millie\Desktop\Particles\Particles\Particles\Game.cpp(79,49): warning C4244:         [
+C:\Users\Millie\Desktop\Particles\Particles\Particles\Game.cpp(79,49): warning C4244:             T=unsigned int
+C:\Users\Millie\Desktop\Particles\Particles\Particles\Game.cpp(79,49): warning C4244:         ]
+  Helpers.cpp
+  Particle.cpp
+  main.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 422 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Particles.vcxproj -> C:\Users\Millie\Desktop\Particles\Particles\Release\Particles.exe
