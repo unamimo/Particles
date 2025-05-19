@@ -2,7 +2,6 @@
 
 Particle::Particle(float startX, float startY)
 {
-	// these are maybe default values?
 	particleShape.setRadius(10.f);
 	particleShape.setFillColor(sf::Color::White);
 	setParticlePosition(startX, startY);

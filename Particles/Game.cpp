@@ -18,6 +18,7 @@ void Game::run() {
 
         // https://stackoverflow.com/questions/54551371/creating-thread-inside-a-for-loop-c
         // update loop
+        // split between threads
         m_vThreads.clear(); // clears thread vector each frame, stops number increasing in vector
         for (size_t i = 1; i <= K_NUMTHREADS; i++) 
         {

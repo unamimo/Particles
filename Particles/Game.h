@@ -8,7 +8,6 @@
 #include <random>
 #include <thread>		// threading, https://iamsorush.com/posts/cpp-std-thread/
 #include <functional>
-//#include "Helpers.h"
 
 class Game {
 public:

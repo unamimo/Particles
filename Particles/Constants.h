@@ -12,7 +12,6 @@ const sf::Vector2<int> K_WINDOWXY = { 800, 600 };	// or 1600, 900
 
 const int K_NUMPARTICLES = 10;
 const float K_PARTICLERADIUS = 5.f;
-//const float K_PARTICLESPEED = 5.f;
 const float K_PARTICLESPEEDLOWER = 1.f;
 const float K_PARTICLESPEEDUPPER = 10.f;
 
