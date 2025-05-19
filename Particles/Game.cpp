@@ -98,7 +98,6 @@ void Game::shutdown()
 {
     for (size_t i = 0; i < m_vParticles.size(); i++)
     {
-        std::cout << "Deleting Particle: " << i;
         delete m_vParticles[i];
     }
     m_vParticles.clear();
