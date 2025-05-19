@@ -10,7 +10,7 @@ const int K_NUMTHREADS = 4;		// Number of threads to split particle processing a
 
 const sf::Vector2<int> K_WINDOWXY = { 800, 600 };	// or 1600, 900
 
-const int K_NUMPARTICLES = 10;				// change the number of particles here 
+const int K_NUMPARTICLES = 1000;			// change the number of particles here 
 const float K_PARTICLERADIUS = 5.f;			// change the radii here 
 const float K_PARTICLESPEEDLOWER = 1.f;		// change lower speed limit here
 const float K_PARTICLESPEEDUPPER = 10.f;	// change upper speed limit here
