@@ -6,12 +6,14 @@
 #include <random>
 
 // CONSTANTS
-const sf::Vector2<int> K_WINDOWXY = { 800, 600 };
-const int K_NUMPARTICLES = 1000;
-const float K_PARTICLERADIUS = 5.f;
-//const float K_PARTICLESPEED = 5.f;
-const float K_PARTICLESPEEDLOWER = 1.f;
-const float K_PARTICLESPEEDUPPER = 10.f;
+const int K_NUMTHREADS = 4;		// Number of threads to split particle processing accross
+
+const sf::Vector2<int> K_WINDOWXY = { 800, 600 };	// or 1600, 900
+
+const int K_NUMPARTICLES = 1000;			// change the number of particles here 
+const float K_PARTICLERADIUS = 5.f;			// change the radii here 
+const float K_PARTICLESPEEDLOWER = 1.f;		// change lower speed limit here
+const float K_PARTICLESPEEDUPPER = 10.f;	// change upper speed limit here
 
 const sf::Vector2<int> K_UP = { 0, -1 };
 const sf::Vector2<int> K_UPRIGHT = { 1, -1 };
